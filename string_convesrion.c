@@ -138,7 +138,7 @@ unsigned int convert_r(va_list args, buffer_t *output,
 
 	end = size - 1;
 	precision = (precision == -1) ? size : precision;
-	for (i = 0; end >= 0 && i < prec; i++)
+	for (i = 0; end >= 0 && i < precision; i++)
 	{
 		res += _memcpy(output, (str + end), 1);
 		end--;

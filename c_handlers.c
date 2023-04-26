@@ -35,10 +35,10 @@ unsigned char handle_flags(const char *flag, char *index)
 			if (flag[i] == flags[j].flag)
 			{
 				(*index)++;
-				if (ret == 0)
-					ret = flags[j].value;
+				if (res == 0)
+					res = flags[j].value;
 				else
-					ret |= flags[j].value;
+					res |= flags[j].value;
 				break;
 			}
 		}

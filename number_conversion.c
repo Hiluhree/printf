@@ -61,7 +61,7 @@ unsigned int convert_di(va_list args, buffer_t *output,
 			res += _memcpy(output, &neg, 1);
 
 		pad = (ZERO_FLAG == 1) ? '0' : ' ';
-		for (wid -= count; wid > 0; wid--)
+		for (width -= count; width > 0; width--)
 			res += _memcpy(output, &pad, 1);
 	}
 
@@ -134,8 +134,8 @@ unsigned int convert_o(va_list args, buffer_t *output,
 	if (HASH_FLAG == 1 && num != 0)
 		res += _memcpy(output, &zero, 1);
 
-	if (!(num == 0 && prec == 0))
-		ret += convert_ubase(output, num, "01234567",
+	if (!(num == 0 && precision == 0))
+		res += convert_ubase(output, num, "01234567",
 				flags, width, precision);
 
 	res += print_neg_width(output, res, flags, width);

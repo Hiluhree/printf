@@ -83,7 +83,7 @@ unsigned int convert_p(va_list args, buffer_t *output,
 {
 	char *null = "(nil)";
 	unsigned long int address;
-	unsigned int ret = 0;
+	unsigned int res = 0;
 
 	(void)len;
 
@@ -94,7 +94,7 @@ unsigned int convert_p(va_list args, buffer_t *output,
 	flags |= 32;
 	res += convert_ubase(output, address, "0123456789abcdef",
 			flags, width, precision);
-	ret += print_neg_width(output, res, flags, width);
+	res += print_neg_width(output, res, flags, width);
 
 	return (res);
 }

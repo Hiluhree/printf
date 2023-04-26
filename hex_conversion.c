@@ -35,7 +35,7 @@ unsigned int convert_x(va_list args, buffer_t *output,
 	if (HASH_FLAG == 1 && num != 0)
 		res += _memcpy(output, lead, 2);
 
-	if (!(num == 0 && prec == 0))
+	if (!(num == 0 && precision == 0))
 		res += convert_ubase(output, num, "0123456789abcdef",
 				flags, width, precision);
 
@@ -73,7 +73,7 @@ unsigned int convert_X(va_list args, buffer_t *output,
 	if (HASH_FLAG == 1 && num != 0)
 		res += _memcpy(output, lead, 2);
 
-	if (!(num == 0 && prec == 0))
+	if (!(num == 0 && precision == 0))
 		res += convert_ubase(output, num, "0123456789ABCDEF",
 				flags, width, precision);
 

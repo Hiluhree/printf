@@ -18,7 +18,7 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 unsigned char handle_flags(const char *flag, char *index)
 {
 	int i, j;
-	unsigned char res = 0;
+	unsigned char ret = 0;
 	flag_t flags[] = {
 		{'+', PLUS},
 		{' ', SPACE},
@@ -35,10 +35,10 @@ unsigned char handle_flags(const char *flag, char *index)
 			if (flag[i] == flags[j].flag)
 			{
 				(*index)++;
-				if (res == 0)
-					res = flags[j].value;
+				if (ret == 0)
+					ret = flags[j].value;
 				else
-					res |= flags[j].value;
+					ret |= flags[j].value;
 				break;
 			}
 		}
@@ -46,7 +46,7 @@ unsigned char handle_flags(const char *flag, char *index)
 			break;
 	}
 
-	return (res);
+	return (ret);
 }
 
 /**

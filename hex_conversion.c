@@ -1,28 +1,27 @@
 #include "main.h"
 
-
 unsigned int convert_x(va_list args, buffer_t *output,
-		unsigned char flags, int width, int precision, unsigned char len);
+		unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_X(va_list args, buffer_t *output,
-		unsigned char flags, int width, int precision, unsigned char len);
+		unsigned char flags, int wid, int prec, unsigned char len);
 
 /**
  * convert_x - Converts an unsigned int argument to hex using abcdef
  *             and stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
- * @width: A width modifier.
- * @precision: A precision modifier.
+ * @wid: A width modifier.
+ * @prec: A precision modifier.
  * @len: A length modifier.
  * @output: A buffer_t struct containing a character array.
  *
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int convert_x(va_list args, buffer_t *output,
-		unsigned char flags, int width, int precision, unsigned char len)
+		unsigned char flags, int wid, int prec, unsigned char len)
 {
 	unsigned long int num;
-	unsigned int res = 0;
+	unsigned int ret = 0;
 	char *lead = "0x";
 
 	if (len == LONG)
@@ -33,15 +32,15 @@ unsigned int convert_x(va_list args, buffer_t *output,
 		num = (unsigned short)num;
 
 	if (HASH_FLAG == 1 && num != 0)
-		res += _memcpy(output, lead, 2);
+		ret += _memcpy(output, lead, 2);
 
-	if (!(num == 0 && precision == 0))
-		res += convert_ubase(output, num, "0123456789abcdef",
-				flags, width, precision);
+	if (!(num == 0 && prec == 0))
+		ret += convert_ubase(output, num, "0123456789abcdef",
+				flags, wid, prec);
 
-	res += print_neg_width(output, res, flags, width);
+	ret += print_neg_width(output, ret, flags, wid);
 
-	return (res);
+	return (ret);
 }
 
 /**
@@ -49,18 +48,18 @@ unsigned int convert_x(va_list args, buffer_t *output,
  *             and stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
- * @width: A width modifier.
- * @precision: A precision modifier.
+ * @wid: A width modifier.
+ * @prec: A precision modifier.
  * @len: A length modifier.
  * @output: A buffer_t struct containing a character array.
  *
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int convert_X(va_list args, buffer_t *output,
-		unsigned char flags, int width, int precision, unsigned char len)
+		unsigned char flags, int wid, int prec, unsigned char len)
 {
 	unsigned long int num;
-	unsigned int res = 0;
+	unsigned int ret = 0;
 	char *lead = "0X";
 
 	if (len == LONG)
@@ -71,13 +70,13 @@ unsigned int convert_X(va_list args, buffer_t *output,
 		num = (unsigned short)num;
 
 	if (HASH_FLAG == 1 && num != 0)
-		res += _memcpy(output, lead, 2);
+		ret += _memcpy(output, lead, 2);
 
-	if (!(num == 0 && precision == 0))
-		res += convert_ubase(output, num, "0123456789ABCDEF",
-				flags, width, precision);
+	if (!(num == 0 && prec == 0))
+		ret += convert_ubase(output, num, "0123456789ABCDEF",
+				flags, wid, prec);
 
-	res += print_neg_width(output, res, flags, width);
+	ret += print_neg_width(output, ret, flags, wid);
 
-	return (res);
+	return (ret);
 }

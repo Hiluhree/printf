@@ -15,11 +15,11 @@ buffer_t *init_buffer(void);
  */
 unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n)
 {
-	unsigned int i;
+	unsigned int index;
 
-	for (i = 0; i < n; i++)
+	for (index = 0; index < n; index++)
 	{
-		*(output->buffer) = *(src + i);
+		*(output->buffer) = *(src + index);
 		(output->len)++;
 
 		if (output->len == 1024)
